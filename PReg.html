@@ -71,7 +71,7 @@
                         <h1>Patient Form</h1>
                     </div>
                     <div class="col-lg-2 d-flex justify-content-end align-items-center p-0">
-                        <a href="logout.html" class="btn btn-secondary">Log-out</a>
+                        <a href="index.html" class="btn btn-secondary">Log-out</a>
                     </div>
                 </div>
                 <!--Welcome message-->
@@ -171,7 +171,7 @@
                             <input type="checkbox" name="hist" id="hypertension" value="Hypertension"> Hypertension <br>
                             <input type="checkbox" name="hist" id="psychiatric" value="Cancer"> Psychiatric Disorder <br>
                             <input type="checkbox" name="hist" id="epilepsy" value="Epilepsy"> Epilepsy <br>
-                            <input type="checkbox" name="hist" id="Others" value="Others"> Others <br>
+                            <input type="checkbox" name="hist" id="Others" value="Others"> Others <input type="text"> <br>
                         </div>
                     </div>
                     <!--end of Medical History-->
@@ -309,7 +309,7 @@
                 return false;
             }
             
-            let regEx = /^\(?([0-9]{4})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{3})$/;
+            let regEx = /^\(?([0-9]{4})\)?[-]?([0-9]{4})[-]?([0-9]{3})$/;
             if(cnum.match(regEx))
                 {
                 console.log('cnum true')
