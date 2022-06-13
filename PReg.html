@@ -13,6 +13,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+        }
+
         .labelRequired:after{
             content: " *";
             color: red;
@@ -51,7 +61,8 @@
 </head>
 <body>
 
-    <div class="container m-5 p-5">
+    <div class="container m-5">
+        <div class="grid">
             <!--header-->
             <div class="row header">
                 <!--page title-->
@@ -201,6 +212,7 @@
 
                 </form>
             </div>
+        </div>
     </div>
     <!--end of Container-->
 
@@ -222,7 +234,7 @@
             checkRequired('errorFname', fname, 'first name'),
             checkRequired('errorLname', lname, 'last name'),
             checkRequired('errorAddress', lname, 'address'),
-            checkRequired('errorBdate', bdate, 'birthday'),
+            checkRequired('errorBdate', bdate, 'birthdate'),
             checkRequired('errorCnum', cnum, 'contact number'),
             checkCnum(cnum),
             checkDOB(bdate)
@@ -260,11 +272,12 @@
             console.log('function checkDOB', bdate)
             if(bdate === ''){
                 return false
+                
             }
             var myDate = new Date(bdate);
             var today = new Date();
             if ( myDate > today ) { 
-                document.getElementById('errorBdate').innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger"></i>Please provide birthdate not later than today'
+                document.getElementById('errorBdate').innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger"></i>Please provide birthdate not later than today.'
                 console.log(`error`);
                 return false;
             } else {
@@ -279,8 +292,11 @@
         function checkCnum(cnum){
             console.log('function cnum', cnum);
             console.log(typeof(cnum));
+            if (cnum === ''){
+                return false;
+            }
             
-            var regEx = /^\(?([0-9]{4})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{3})$/;
+            let regEx = /^\(?([0-9]{4})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{3})$/;
             if(cnum.match(regEx))
                 {
                 console.log('cnum true')
