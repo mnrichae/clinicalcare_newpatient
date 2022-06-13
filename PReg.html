@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Patient Registration</title>
 
     <!--Bootstrap-->
     <!-- CSS only -->
@@ -223,6 +223,7 @@
 
             //valid entries
             let checkedGender = document.querySelector('input[name = "gender"]:checked');
+            // let gender = document.getElementById('gender');
             let fname = document.getElementById('fname').value;
             let lname = document.getElementById('lname').value;
             let address = document.getElementById('address').value;
@@ -236,6 +237,7 @@
             checkRequired('errorAddress', lname, 'address'),
             checkRequired('errorBdate', bdate, 'birthdate'),
             checkRequired('errorCnum', cnum, 'contact number'),
+            checkGender(),
             checkCnum(cnum),
             checkDOB(bdate)
             ];
@@ -262,12 +264,23 @@
                 return true;
             } else {
                 console.log(`check required() detects unsuccessful entry`);
-                document.getElementById(errorDiv).innerHTML = `<i class="bi bi-exclamation-circle-fill text-danger"></i>Please provide ${fieldEntry}.`
+                document.getElementById(errorDiv).innerHTML = `<i class="bi bi-exclamation-circle-fill text-danger"></i> Please provide ${fieldEntry}.`
                 
                 return false;
             }
         }
 
+        function checkGender() {    
+            let getSelectedValue = document.querySelector('input[name="gender"]:checked');   
+                
+            if(getSelectedValue != null) {   
+                document.getElementById("errorGender").innerHTML = ''
+                return true;
+            }   
+            else {   
+                document.getElementById("errorGender").innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger"></i> Please provide gender.'
+            }   
+        }    
         function checkDOB(bdate) {
             console.log('function checkDOB', bdate)
             if(bdate === ''){
@@ -277,7 +290,7 @@
             var myDate = new Date(bdate);
             var today = new Date();
             if ( myDate > today ) { 
-                document.getElementById('errorBdate').innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger"></i>Please provide birthdate not later than today.'
+                document.getElementById('errorBdate').innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger"></i> Please provide birthdate not later than today.'
                 console.log(`error`);
                 return false;
             } else {
@@ -305,7 +318,7 @@
                 }
             else
                 {
-                document.getElementById('errorCnum').innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger"></i>Please provide in this format: 0987-6543-210'
+                document.getElementById('errorCnum').innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger"></i> Please provide in this format: 0987-6543-210'
                 console.log('cnum false')
                 return false;
                 }
